@@ -1,0 +1,114 @@
+:root {
+  --lightblue: #a0d2eb;
+  --whitepurple: #e5eaf5;
+  --mediumpurple: #997ec7;
+  --strongpurple: #8458B3;
+  --heavypurple: #494D5F;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  font: 14px "Lato", sans-serif;
+}
+
+a {
+  color: var(--mediumpurple);
+}
+
+a:hover {
+  color: var(--strongpurple);
+}
+
+section {
+  min-height: 70vh;
+}
+
+.fab {
+  padding: 15px;
+  font-size: 30px;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  margin: auto 5px;
+  text-decoration: none;
+  border-radius: 50%;
+  background: white;
+  color: var(--heavypurple);
+  opacity: 0.7;
+}
+
+.fab:hover {
+  text-decoration: none;
+  opacity: 1;
+  color: var(--heavypurple);
+}
+
+section#top {
+  background-color: var(--strongpurple);
+}
+
+section#contact {
+  background-color: var(--heavypurple);
+}
+
+section#projects {
+  margin-bottom: 40px;
+}
+
+
+.section-title {
+  margin: 60px auto;
+}
+
+nav {
+  background-color: white !important;
+  height: 60px;
+}
+
+.navbar-brand {
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: var(--heavypurple);
+}
+
+.nav-link {
+  color: var(--heavypurple) !important;
+}
+
+.nav-link:hover {
+  color: var(--strongpurple) !important;
+}
+
+.nav-link.nav-link-contact {
+  margin-left: 15px;
+  background: var(--heavypurple);
+  color: white !important;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-link.nav-link-contact:hover {
+  background: var(--strongpurple);
+}
+
+.fas.fa-bars {
+  color: var(--strongpurple);
+  font-size: 28px;
+}
+
+.fa-snowboarding {
+  font-size:100px;
+  margin: 10px auto;
+}
+
+.card {
+  transition: 0.3s;
+}
+
+.card:hover {
+  filter: drop-shadow(0px 8px 4px var(--strongpurple));
+}
