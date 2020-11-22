@@ -4,11 +4,13 @@ const nodeExternals = require('webpack-node-externals')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HandlebarsPlugin = require("handlebars-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
-    entry: {
-        bundle: './app.js'
-    } ,
+    entry: [
+        './app.js',
+        './public/stylesheets/style.css'
+    ],
     output: {
         path: path.resolve(__dirname, './dist')
     },
@@ -22,14 +24,20 @@ module.exports = {
         rules: [
             { test: /\.hbs$/, loader: "handlebars-loader" },
             {
-                test: /\.css$/,
-                use: [
-                  'style-loader',
-                  'css-loader'
-                ]
-              }
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
+            }
+            
         ] 
     },
+    optimization: {
+        minimize: true,
+        minimizer: [
+          // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+          // `...`
+          new CssMinimizerPlugin(),
+        ],
+      },
     plugins: [
         /** Since Webpack 4 */
         new webpack.LoaderOptionsPlugin({
@@ -38,16 +46,6 @@ module.exports = {
             }
           }),
           new MiniCssExtractPlugin({
-            filename: "[name]-styles.css",
-            chunkFilename: "[id].css"
-          }),
-          new HtmlWebpackPlugin({
-            title: "Generic Head Title",
-            // the template you want to use
-            template: path.join(__dirname, "views", "head.hbs"),
-            // the output file name
-            filename: path.join(__dirname, "dist", "head.hbs"),
-            inject: "head"
           }),
             new HandlebarsPlugin({
               // path to hbs entry file(s). Also supports nested directories if write path.join(process.cwd(), "app", "src", "**", "*.hbs"),
@@ -55,14 +53,7 @@ module.exports = {
               // output path and filename(s). This should lie within the webpacks output-folder
               // if ommited, the input filepath stripped of its extension will be used
               output: path.join(process.cwd(), "dist", "[name].html"),
-              // you can also add a [path] variable, which will emit the files with their relative path, like
-              // output: path.join(process.cwd(), "build", [path], "[name].html"),
-              partials: [
-                path.join(process.cwd(), "app", "views", "partials", "*.hbs")
-              ],
-              // hooks
-              // getTargetFilepath: function (filepath, outputTemplate) {},
-              // getPartialId: function (filePath) {}
+              
               onBeforeSetup: function (Handlebars) {},
               onBeforeAddPartials: function (Handlebars, partialsMap) {},
               onBeforeCompile: function (Handlebars, templateContent) {},
