@@ -1,6 +1,8 @@
 # justaportfolio
 Just a portfolio web app
 
+![demo](https://user-images.githubusercontent.com/15044782/99917665-77e1ec00-2cf0-11eb-9f29-32a78b7a38e6.png)
+
 ## Intro
 This project is a simple npm application, using express as the server-side framework, and only bootstrap + css on the front end. All animations and transitions were done purely with css.
 
