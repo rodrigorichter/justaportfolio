@@ -83,16 +83,29 @@ nav {
   color: var(--strongpurple) !important;
 }
 
-.nav-link.nav-link-contact {
-  margin-left: 15px;
-  background: var(--heavypurple);
-  color: white !important;
-  border-radius: 4px;
-  transition: 0.3s;
+@media(max-width: 959px) {
+  .nav-link {
+    margin-left: 15px;
+  }
 }
 
-.nav-link.nav-link-contact:hover {
-  background: var(--strongpurple);
+@media(min-width: 960px) {
+  .nav-link.nav-link-contact {
+    margin-left: 15px;
+    background: var(--heavypurple);
+    color: white !important;
+    border-radius: 4px;
+    transition: 0.3s;
+  }
+  .nav-link.nav-link-contact:hover {
+    background: var(--strongpurple);
+  }
+}
+
+.navbar-collapse.collapse,
+.navbar-collapse.collapsing {
+  background-color: white;
+  border-radius: 10px;
 }
 
 .fas.fa-bars {
